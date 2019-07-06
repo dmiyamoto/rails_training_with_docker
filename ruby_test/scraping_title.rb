@@ -1,6 +1,6 @@
 require "#{Dir.pwd}/ruby_test/common"
 
-url = "https://gsacademy.tokyo/"
+url = 'https://gsacademy.tokyo/'
 
 charset = nil
 html = open(url) do |f|
@@ -11,12 +11,14 @@ html = open(url) do |f|
   # p charset
   f.read # htmlを読み込んで変数htmlに渡す
 end
+
 # p html
 
 
 doc = Nokogiri::HTML.parse(html, nil, charset)
 # 扱いやすくなるように修正してもらえる
 # pp doc
+
 # ページ全体から抽出
 # CSSセレクタで抽出、配列と同じように扱える
 # pp doc.css(".item").count

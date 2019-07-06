@@ -2,14 +2,21 @@ require 'nokogiri'
 require 'active_record'
 require 'open-uri'
 require 'pp'
+require 'redis'
+require 'selenium-webdriver'
+require 'dotenv'
 
 ActiveRecord::Base.establish_connection(
   adapter:  "mysql2",  #アダプター名
-  host:     "gs_premire_rails-master_db_1",  #nameでも入れる。
+  host:     "gs-premire-rails_db_1",  #nameでも入れる。
   username: "root",  #ユーザー名
   password: "password",  #パスワード
-  database: "ruby_test",  #データベース名
+  database:  "ruby_test",  #データベース名
 )
 
 class Headline < ActiveRecord::Base
 end
+
+$redis = Redis.new \
+  url: ENV["REDIS_URL"],
+  port: ENV["REDIS_PORT"]
